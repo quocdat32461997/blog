@@ -4,10 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
+
+//routers setup
+var homeRouter = require('./routes/home');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,8 +19,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//set global path
+app.use('/views', express.static(path.join(__dirname, 'views')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
+app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
+
+//put routers in use
+app.use('/home', homeRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

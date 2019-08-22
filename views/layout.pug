@@ -1,7 +1,26 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+html 
+	head
+		title= title
+		link(rel = 'stylesheet', href = '/css/bootstrap.min.css')
+	body
+		nav(class= "navbar navbar-expand-lg navbar-light bg-light")
+			a(class= "navbar-brand" href= "/home") Loan Nguyen's Cook 
+			button(class= "navbar-toggler" type= "button" data-toggle= "collapse" data-target= "#navbarSupportedContent" aria-controls= "navbarSupportedContent" aria-expanded= "false" aria-label= "Toggle navigation")
+				span(class= "navbar-toggler-icon")
+			div(class="collapse navbar-collapse" id= "navbarSupportedContent")
+				ul(class= "navbar-nav mr-auto")
+					li(class= "nav-item active")
+						a(class= "nav-link" href= "/home/about") About 
+							span(class= "sr-only") (current) 
+					li(class= "nav-item")
+						a(class= "nav-link" href="/moreprojects") Recipe 
+				form(class= "form-inline my-2 my-lg-0" method="get" action="/recipes/findrecipesbyname")
+					input(class= "form-control mr-sm-2" type="search" placeholder= "Search" aria-label="Search" name = 'recipename')
+					button(class="btn btn-outline-success my-2 my-sm-0" type="submit") Search
+		block content	
+		
+		script(src = '/js/jquery.min.js')
+		script(src = '/js/bootstrap.min.js')
+
+		include footer

@@ -1,0 +1,15 @@
+extend ../layout 
+
+block content
+	.container
+		form(method='post' action='/recipes/savenewrecipes')
+			.form-group
+				label(for='recipename') Recipe Name
+				input#recipename.form-control(name= 'recipename' type='text' placeholder='New Recipe') 
+			.form-group
+				label(for='ingredients') Ingredients
+				input#ingredients.form-control(name= 'ingredients' type='text' placeholder='Ingredients')
+			.form-group
+				label(for='steps') Steps
+				input#steps.form-control(name='steps' type='text' placeholder='Wear an apron') 	
+			button.btn.btn-primary.mb-2(type='submit') Upload
