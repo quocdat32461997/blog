@@ -1,5 +1,5 @@
 # food-blog
-
+Link to the blog: http://blog-dev.29spn6rfcj.us-east-1.elasticbeanstalk.com/home
 DynamoDB:
   https://medium.com/@Keithweaver_/using-aws-dynamodb-using-node-js-fd17cf1724e0
   https://medium.com/@Keithweaver_/using-aws-dynamodb-using-node-js-fd17cf1724e0
