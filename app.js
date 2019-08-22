@@ -1,3 +1,4 @@
+var aws = require('aws-sdk');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,6 +6,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var app = express();
+//config aws dynamodb 
+aws.config.update({
+	region:"us-east-1",
+	endpoint: "http://localhost:8000"
+});
+var db = new aws.DynamoDB();
+console.log(db)
 
 //routers setup
 var homeRouter = require('./routes/home');
