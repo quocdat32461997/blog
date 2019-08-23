@@ -16,6 +16,7 @@ console.log(db)
 
 //routers setup
 var homeRouter = require('./routes/home');
+var recipesRouter = require('./routes/recipes');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,7 +36,7 @@ app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist
 
 //put routers in use
 app.use('/home', homeRouter);
-
+app.use('/recipes', recipesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
