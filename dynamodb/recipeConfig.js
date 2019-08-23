@@ -3,7 +3,7 @@
 *		-> Name
 *		-> Amout
 *	steps - list of strings that describe cookign instrucitons. In future, steps become list of paragraphs (string).                                                                */           
-module.exprots = {
+var recipeConfig = {
 	"titile":"Recipe",
 	"type": "object",
 	"properties": {
@@ -37,4 +37,8 @@ module.exprots = {
 			}
 		}
 	}	
+}
+
+var recipeSchema = {
+	
 }
