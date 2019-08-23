@@ -8,6 +8,9 @@ var recipesController = require('../controllers/recipesController');
 router.get('/', recipesController.renderRecipeForm);
 
 /* POST findrecipesbyname */
-router.get('/findrecipesbyname', recipesController.findrecipesbyname);
+router.post('/findrecipesbyname', recipesController.findrecipesbyname);
+
+/* POST savenewrecipes */
+router.post('/savenewrecipes', recipesController.writerecipes);
 
 module.exports = router;
