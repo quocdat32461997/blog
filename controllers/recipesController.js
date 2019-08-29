@@ -8,10 +8,11 @@ const table_name = 'recipe';
 //configurate aws dynamodb
 aws.config.update({
 	region: 'us-east-1',
-	endpoint:"http://localhost:8000"
+	accessKeyId: 'AKIA27UEZ7DUGDNUFYWA',
+	secretyAccessKey: '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'	
 });
 
-/* renderRecipeForm - function to render the writing-recipe form */
+/*renderRecipeForm - function to render the writing-recipe form */
 exports.renderRecipeForm = function(req, res) {
 	console.log(__dirname);
 	res.render('../views/recipes/writerecipes');
@@ -20,14 +21,10 @@ exports.renderRecipeForm = function(req, res) {
 exports.writerecipes = function(req, res) {
 	//connect to database
 	var document = new aws.DynamoDB.DocumentClient();
-			
-	//insert recipes to dynamodb
-	
-	//parse recipe input into params
-	//caling recipe_generator
- 
+
+	//check table exist
 	var params = {
-		TableName: table_name,
+		TableName: 'Recipes',
 		Item: recipe_generator(req.body)
 	};
 	document.put(params, function(err, data) {
