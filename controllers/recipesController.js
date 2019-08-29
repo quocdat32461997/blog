@@ -30,6 +30,7 @@ exports.writerecipes = function(req, res) {
 			'recipeName: recipe.recipeName
 		}
 	};
+	/*
 	document.put(params, function(err, data) {
 		if(err) {
 			console.error("Unable to add recipe", err);
@@ -38,7 +39,7 @@ exports.writerecipes = function(req, res) {
 			console.log("Successfully put item into DynamoDB");
 		}	
 	});
-	
+	*/
 	//render the writing-recipe form
 	res.render('../views/recipes/writerecipes');
 };
