@@ -3,7 +3,7 @@ const path = require('path');
 const aws = require('aws-sdk');
 const RecipeModel = require('../models/recipeModel');
 const id_generator = require('shortid');
-const table_name = 'Recipe';
+const table_name = 'Recipes';
 
 //configurate aws dynamodb
 aws.config.update({
@@ -29,7 +29,7 @@ exports.writerecipes = function(req, res) {
 	};
 	document.put(params, function(err, data) {
 		if(err) {
-			console.error("Unable to add recipe", recipe.body.recipename, "ERROR");
+			console.error("Unable to add recipe", err);
 		}
 		else {
 			console.log("Successfully put item into DynamoDB");
