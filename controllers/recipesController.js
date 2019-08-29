@@ -3,7 +3,7 @@ const path = require('path');
 const aws = require('aws-sdk');
 const RecipeModel = require('../models/recipeModel');
 const id_generator = require('shortid');
-const table_name = 'recipe';
+const table_name = 'Recipe';
 
 //configurate aws dynamodb
 aws.config.update({
