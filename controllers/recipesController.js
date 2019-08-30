@@ -16,6 +16,41 @@ exports.renderRecipeForm = function(req, res) {
 	res.render('../views/recipes/writerecipes');
 };
 
+exports.findrecipesbyname = async function(req, res) {
+};
+
+
+/* recipe_generator - function to parse recipe properties into json-object as the recipeModel */
+var recipe_generator = function(recipe) {
+	var id = id_generator.generate();
+	//parse ingredients and steps
+	var ingredients = ingredient_parser(recipe);
+	var steps = step_parser(recipe);
+
+	//create recipe json object
+	var x = new RecipeModel();
+	var recipe = new RecipeModel({
+		recipeID: id,
+		recipeName: recipe.recipename,
+		//ingredients: {
+		//	ingredientNames: ingredients[0],
+		//	ingredientAmount: ingredients[1]
+		//},
+		//steps: steps
+	});
+	return recipe
+};
+
+var ingredient_parser = function(recipe) {
+	var ingredientNames = recipe.ingredients.split(',');
+	var ingredientAmount = recipe.amount.split(',');
+	
+	return [ingredientNames, ingredientAmount];
+};
+var step_parser = function(recipe) {
+	return recipe.steps.split(',');
+};
+
 exports.writerecipes = function(req, res) {
 	//connect to database
 	var document = new aws.DynamoDB.DocumentClient();
@@ -42,39 +77,4 @@ exports.writerecipes = function(req, res) {
 	*/
 	//render the writing-recipe form
 	res.render('../views/recipes/writerecipes');
-};
-
-exports.findrecipesbyname = async function(req, res) {
-};
-
-
-/* recipe_generator - function to parse recipe properties into json-object as the recipeModel */
-var recipe_generator = function(recipe) {
-	var id = id_generator.generate();
-	//parse ingredients and steps
-	var ingredients = ingredient_parser(recipe);
-	var steps = step_parser(recipe);
-
-	//create recipe json object
-	var x = new RecipeModel();
-	var recipe = new RecipeModel({
-		recipeID: id,
-		recipeName: recipe.recipename,
-		//ingredients: {
-		//	ingredientNames: ingredients[0],
-		//	ingredientAmount: ingredients[1]
-		//},
-		//steps: steps
-	});
-	console.log(recipe);
-};
-
-var ingredient_parser = function(recipe) {
-	var ingredientNames = recipe.ingredients.split(',');
-	var ingredientAmount = recipe.amount.split(',');
-	
-	return [ingredientNames, ingredientAmount];
-};
-var step_parser = function(recipe) {
-	return recipe.steps.split(',');
 };
