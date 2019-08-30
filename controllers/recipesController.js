@@ -4,11 +4,10 @@ const aws = require('aws-sdk');
 const RecipeModel = require('../models/recipeModel');
 const id_generator = require('shortid');
 const table_name = 'Recipes';
+const aws_config = require('../dynamodb_config.js');
 
 //configurate aws dynamodb
-aws.config.update({
-	region: 'us-east-1',
-});
+aws.config.update(aws_config.aws_remote_config);
 
 /*renderRecipeForm - function to render the writing-recipe form */
 exports.renderRecipeForm = function(req, res) {
