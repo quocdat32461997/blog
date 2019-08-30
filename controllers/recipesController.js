@@ -4,10 +4,13 @@ const aws = require('aws-sdk');
 const RecipeModel = require('../models/recipeModel');
 const id_generator = require('shortid');
 const table_name = 'Recipes';
-const aws_config = require('../dynamodb_config.js');
+//const aws_config = require('../dynamodb_config.js');
 
 //configurate aws dynamodb
-aws.config.update(aws_config.aws_remote_config);
+aws.config.update({
+	region: 'us-east-1',
+	//endpoint:"https://dynamodb.us-east-1.amazonaws.com"
+});
 
 /*renderRecipeForm - function to render the writing-recipe form */
 exports.renderRecipeForm = function(req, res) {
@@ -28,7 +31,7 @@ var recipe_generator = function(recipe) {
 
 	//create recipe json object
 	var x = new RecipeModel();
-	var recipe = new RecipeModel({
+	/*var recipe = new RecipeModel({
 		recipeID: id,
 		recipeName: recipe.recipename,
 		ingredients: {
@@ -37,6 +40,16 @@ var recipe_generator = function(recipe) {
 		},
 		steps: steps
 	});
+	*/
+	var recipe = {
+		'recipeID': id,
+		'recipeName': recipe.recipename,
+		'ingredients': {
+			'ingredientNames': ingredients[0],
+			'ingredientAmount': ingredients[1]
+		},
+		steps: steps
+	};
 	return recipe
 };
 
@@ -55,6 +68,8 @@ exports.writerecipes = function(req, res) {
 	var document = new aws.DynamoDB.DocumentClient();
 	var recipe = recipe_generator(req.body);
 	
+	//print aws.config
+	console.log(aws.config);	
 	//check table exist
 	var params = {
 		TableName: 'Recipes',
