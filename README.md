@@ -1,5 +1,5 @@
 # food-blog
-Link to the blog: http://blog-dev.29spn6rfcj.us-east-1.elasticbeanstalk.com/home
+Link to the blog:http://blog-dev-v2.us-east-1.elasticbeanstalk.com/home
 
 Intergrating to DynamoDB, below are references for integrating AWS
   https://medium.com/@Keithweaver_/using-aws-dynamodb-using-node-js-fd17cf1724e0
