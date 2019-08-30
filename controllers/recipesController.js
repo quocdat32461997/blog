@@ -32,11 +32,11 @@ var recipe_generator = function(recipe) {
 	var recipe = new RecipeModel({
 		recipeID: id,
 		recipeName: recipe.recipename,
-		//ingredients: {
-		//	ingredientNames: ingredients[0],
-		//	ingredientAmount: ingredients[1]
-		//},
-		//steps: steps
+		ingredients: {
+			ingredientNames: ingredients[0],
+			ingredientAmount: ingredients[1]
+		},
+		steps: steps
 	});
 	return recipe
 };
@@ -62,10 +62,12 @@ exports.writerecipes = function(req, res) {
 		//Item: recipe_generator(req.body)
 		Item: {
 			'recipeID': recipe.recipeID,
-			'recipeName': recipe.recipeName
+			'recipeName': recipe.recipeName,
+			'ingredients':recipe.ingredients,
+			'steps': recipe.steps
 		}
 	};
-	/*
+	console.log(params.Item);	
 	document.put(params, function(err, data) {
 		if(err) {
 			console.error("Unable to add recipe", err);
@@ -74,7 +76,7 @@ exports.writerecipes = function(req, res) {
 			console.log("Successfully put item into DynamoDB");
 		}	
 	});
-	*/
+	
 	//render the writing-recipe form
 	res.render('../views/recipes/writerecipes');
 };
