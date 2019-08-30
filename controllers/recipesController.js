@@ -27,7 +27,7 @@ exports.writerecipes = function(req, res) {
 		//Item: recipe_generator(req.body)
 		Item: {
 			'recipeID': recipe.recipeID,
-			'recipeName: recipe.recipeName
+			'recipeName': recipe.recipeName
 		}
 	};
 	/*
