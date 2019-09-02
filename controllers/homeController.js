@@ -5,7 +5,6 @@ var recipeCount = 0;
 * displayRecipesInHomePage - function to query recipes and display recipes in home page
 */
 exports.displayRecipesInHomePage = async function(req, res) {
-	//db.connect();
 	//var collection = db.getdb().collection(collectionName);
 
 	recipeCOunt = 0;

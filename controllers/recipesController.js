@@ -28,16 +28,6 @@ var recipe_generator = function(recipe) {
 
 	//create recipe json object
 	var x = new RecipeModel();
-	/*var recipe = new RecipeModel({
-		recipeID: id,
-		recipeName: recipe.recipename,
-		ingredients: {
-			ingredientNames: ingredients[0],
-			ingredientAmount: ingredients[1]
-		},
-		steps: steps
-	});
-	*/
 	var recipe = {
 		'recipeID': id,
 		'recipeName': recipe.recipename,
@@ -68,7 +58,6 @@ exports.writerecipes = function(req, res) {
 	//check table exist
 	var params = {
 		TableName: 'Recipes',
-		//Item: recipe_generator(req.body)
 		Item: {
 			'recipeID': recipe.recipeID,
 			'recipeName': recipe.recipeName,
@@ -76,7 +65,11 @@ exports.writerecipes = function(req, res) {
 			'steps': recipe.steps
 		}
 	};
-	console.log(params);
+
+	//print recipe for testing
+	//console.log(params);
+	
+	//Put recipe into Recipes table
 	document.put(params, function(err, data) {
 		if(err) {
 			console.error("Unable to add recipe", err);
