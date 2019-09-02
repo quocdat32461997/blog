@@ -4,13 +4,10 @@ const aws = require('aws-sdk');
 const RecipeModel = require('../models/recipeModel');
 const id_generator = require('shortid');
 const table_name = 'Recipes';
-//const aws_config = require('../dynamodb_config.js');
+const aws_config = require('../dynamodb_config.js');
 
 //configurate aws dynamodb
-aws.config.update({
-	region: 'us-east-1',
-	//endpoint:"https://dynamodb.us-east-1.amazonaws.com"
-});
+aws.config.update(aws_config.aws_remote_config);
 
 /*renderRecipeForm - function to render the writing-recipe form */
 exports.renderRecipeForm = function(req, res) {
@@ -56,7 +53,7 @@ var recipe_generator = function(recipe) {
 var ingredient_parser = function(recipe) {
 	var ingredientNames = recipe.ingredients.split(',');
 	var ingredientAmount = recipe.amount.split(',');
-	
+
 	return [ingredientNames, ingredientAmount];
 };
 var step_parser = function(recipe) {
@@ -67,9 +64,7 @@ exports.writerecipes = function(req, res) {
 	//connect to database
 	var document = new aws.DynamoDB.DocumentClient();
 	var recipe = recipe_generator(req.body);
-	
-	//print aws.config
-	console.log(aws.config);	
+
 	//check table exist
 	var params = {
 		TableName: 'Recipes',
@@ -81,16 +76,16 @@ exports.writerecipes = function(req, res) {
 			'steps': recipe.steps
 		}
 	};
-	console.log(params.Item);	
+	console.log(params);
 	document.put(params, function(err, data) {
 		if(err) {
 			console.error("Unable to add recipe", err);
 		}
 		else {
 			console.log("Successfully put item into DynamoDB");
-		}	
+		}
 	});
-	
+
 	//render the writing-recipe form
 	res.render('../views/recipes/writerecipes');
 };
