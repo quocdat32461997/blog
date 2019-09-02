@@ -77,7 +77,7 @@ exports.writerecipes = function(req, res) {
 		}
 	};
 	console.log(params);
-	document.putItem(params, function(err, data) {
+	document.put(params, function(err, data) {
 		if(err) {
 			console.error("Unable to add recipe", err);
 		}
