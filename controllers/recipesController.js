@@ -11,7 +11,6 @@ aws.config.update(aws_config.aws_remote_config);
 
 /*renderRecipeForm - function to render the writing-recipe form */
 exports.renderRecipeForm = function(req, res) {
-	console.log(__dirname);
 	res.render('../views/recipes/writerecipes');
 };
 
