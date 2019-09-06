@@ -26,10 +26,10 @@ var recipe_generator = function(recipe) {
 	var steps = step_parser(recipe);
 
 	//create recipe json object
-	var x = new RecipeModel();
+	console.log(recipe);
 	var recipe = {
 		'recipeID': id,
-		'recipeName': recipe.recipename,
+		'recipeName': recipe.recipeName,
 		'ingredients': {
 			'ingredientNames': ingredients[0],
 			'ingredientAmount': ingredients[1]
