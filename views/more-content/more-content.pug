@@ -2,27 +2,14 @@ block more-content
 	link(href='/views/css/load-more-button.css' rel='stylesheet' type= 'text/css')
 	br
 	.interior.container.clearfix
-		.row
-			if recipes[0]	
-				.col-xs-12.col-sm-6.col-md-4.blogBox.moreBox
-					.item
-						.blogTxt
-							h2= recipes[0].recipeName 
-							p= recipes[0].ingredients.ingredientNames
-							p= recipes[0].steps 
-			if recipes[1]
-				.col-xs-12.col-sm-6.col-md-4.blogBox.moreBox
-					.item
-						.blogTxt
-							h2= recipes[1].recipeName
-							p= recipes[1].ingredients.ingredientNames
-							p= recipes[1].steps 
-			if recipes[2]
-				.col-xs-12.col-sm-6.col-md-4.blogBox.moreBox
-					.item
-						.blogTxt
-							h2= recipes[2].recipeName
-							p= recipes[2].ingredients.ingredientNames
-							p= recipes[2].steps 
-			#loadMore(style='')
-				a(id='loadMoreButton' href='/home/morerecipes') Load More
+		ul
+			.row
+				each recipe in recipes
+					.col-xs-12.col-sm-4.col-md-4.blogBox.moreBox
+						.item
+							.blogTxt
+								h2= recipe.recipeName
+								p= recipe.ingredients.ingredientNames
+								p= recipe.steps
+		#loadMore(style='')
+			a(id='loadMoreButton' href='/home/morerecipes') Load More
