@@ -7,6 +7,5 @@ Intergrating to DynamoDB, below are references for integrating AWS
  https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.Basics.html#WorkingWithTables.Basics.CreateTable
 
 Plans:
-**** Integrate to DynamoDB to host databse on AWS
 * Add User feature to create admin and reserve the "Write recipes" function to admin
 * Update the recipe searching
