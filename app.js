@@ -3,8 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var app = express();
+
+//global variables
+global._projdir = __dirname //global project directory
 
 //routers setup
 var homeRouter = require('./routes/home');
@@ -25,7 +27,6 @@ app.use('/views', express.static(path.join(__dirname, 'views')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
-
 //put routers in use
 app.use('/home', homeRouter);
 app.use('/recipes', recipesRouter);

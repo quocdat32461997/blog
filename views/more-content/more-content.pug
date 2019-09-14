@@ -1,15 +1,17 @@
 block more-content
 	link(href='/views/css/load-more-button.css' rel='stylesheet' type= 'text/css')
+	link(href='/views/css/more-content.css' rel='stylesheet' type='text/css')
 	br
 	.interior.container.clearfix
 		ul
 			.row
 				each recipe in recipes
 					.col-xs-12.col-sm-4.col-md-4.blogBox.moreBox
-						.item
-							.blogTxt
-								h2= recipe.recipeName
-								p= recipe.ingredients.ingredientNames
-								p= recipe.steps
+						a(href='/home/displayarecipe')
+							.item
+								.blogTxt
+									h2= recipe.recipeName
+									p= recipe.ingredients.ingredientNames
+									p= recipe.steps
 		#loadMore(style='')
 			a(id='loadMoreButton' href='/home/morerecipes') Load More

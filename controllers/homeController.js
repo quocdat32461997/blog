@@ -21,7 +21,7 @@ exports.displayRecipesInHomePage = async function(req, res) {
 	document.scan(params, function(err, data) {
 		if(err) console.log(err);
 		else {
-			console.log(data.LastEvaluatedKey);
+			//console.log(data.LastEvaluatedKey);
 			last_key = data.LastEvaluatedKey; //save LastEvaluatedKey
 			res.render('index', {"recipes":data.Items}); //render	
 		}
@@ -43,7 +43,8 @@ exports.displayMoreRecipes = async function(req, res) {
 	document.scan(params, function(err, data) {
 		if(err) console.log(err);
 		else {
-			console.log(data.Items);
+			//console.log(data.Items);
+			last_key = data.LastEvaluatedKey; //update LastEvaluatedKey
 			res.render('index', {"recipes":data.Items});	//render recipes
 		}
 	});
@@ -51,4 +52,7 @@ exports.displayMoreRecipes = async function(req, res) {
 
 exports.displayAboutPage = async function(req, res) {
 	res.render('about');
+};
+
+exports.displayarecipe = async function(req, res) {
 };

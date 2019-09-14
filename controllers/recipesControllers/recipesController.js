@@ -6,6 +6,7 @@ const id_generator = require('shortid');
 const table_name = 'Recipes';
 const aws_config = require(path.join(_projdir, 'dynamodb_config.js'));
 const recipe_processor = require('./recipe_processor.js');
+
 //configurate aws dynamodb
 aws.config.update(aws_config.aws_remote_config);
 
@@ -15,39 +16,6 @@ exports.renderRecipeForm = function(req, res) {
 };
 
 exports.findrecipesbyname = async function(req, res) {
-};
-
-
-/* recipe_generator - function to parse recipe properties into json-object as the recipeModel */
-var recipe_generator = function(recipeInput) {
-	var id = id_generator.generate();
-	//parse ingredients and steps
-	var ingredients = ingredient_parser(recipeInput);
-	var steps = step_parser(recipeInput);
-
-	//create recipe json object
-	//console.log(recipeInput);
-	var recipeItem = {
-		'recipeID': id,
-		'recipeName': recipe.recipeName,
-		'ingredients': {
-			'ingredientNames': ingredients[0],
-			'ingredientAmount': ingredients[1]
-		},
-		steps: steps
-	};
-	console.log(recipeItem);
-	return recipeItem
-};
-
-var ingredient_parser = function(recipe) {
-	var ingredientNames = recipe.ingredients.split(',');
-	var ingredientAmount = recipe.amount.split(',');
-
-	return [ingredientNames, ingredientAmount];
-};
-var step_parser = function(recipe) {
-	return recipe.steps.split(',');
 };
 
 exports.writerecipes = function(req, res) {
@@ -66,9 +34,6 @@ exports.writerecipes = function(req, res) {
 		}
 	};
 
-	//print recipe for testing
-	//console.log(params);
-	
 	//Put recipe into Recipes table
 	document.put(params, function(err, data) {
 		if(err) {
