@@ -6,7 +6,9 @@ block content
 		h1= recipe.recipeName
 		.row
 			.col-xs-12.col-sm-4.col-md-4
-				each ingredient in recipe.ingredients	
-					p= ingredient.ingredientName | ingredient.ingredientAmount
+				h4 Ingredients
+				each amount, name in recipe.ingredients.ingredients
+					p= name + '|' +  amount 
+				h4 Steps
 				each step in recipe.steps
 					p= step
