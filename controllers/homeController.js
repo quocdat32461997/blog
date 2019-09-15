@@ -1,4 +1,5 @@
 const aws = require('aws-sdk');
+const path = require('path');
 const aws_config = require('../dynamodb_config.js');
 var recipeCount = 0;
 var last_key = null;
@@ -21,7 +22,7 @@ exports.displayRecipesInHomePage = async function(req, res) {
 	document.scan(params, function(err, data) {
 		if(err) console.log(err);
 		else {
-			//console.log(data.LastEvaluatedKey);
+			console.log("Query succeeded");
 			last_key = data.LastEvaluatedKey; //save LastEvaluatedKey
 			res.render('index', {"recipes":data.Items}); //render	
 		}
@@ -55,4 +56,24 @@ exports.displayAboutPage = async function(req, res) {
 };
 
 exports.displayarecipe = async function(req, res) {
+	//params - store TableName to query the recipe
+	var params = {
+		TableName: aws_config.aws_table_name,
+		KeyConditionExpression: '#id = :id',
+		ExpressionAttributeNames: {
+			'#id': 'recipeID'
+		},
+		ExpressionAttributeValues: {
+			':id':req.query.id
+		}
+	}
+	
+	document.query(params, function(err, data) {
+		if(err) console.log(err);
+		else {
+			console.log("Query succeeded");
+			console.log(data.Items[0].ingredients.ingredients);
+			res.render(path.join(_projdir, 'views/recipes/recipe'), {'recipe':data.Items[0]});
+		}
+	});
 };
