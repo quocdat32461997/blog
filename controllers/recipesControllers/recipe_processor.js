@@ -23,8 +23,8 @@ exports.recipe_generator = function(recipeInput) {
 		'recipeName': recipeInput.recipeName,
 		'ingredients': {
 			'ingredientNames': ingredients[0],
-			'ingredientAmount': ingredients[1]
-		},
+			'ingredients':ingredients[1]
+		}, 
 		steps: steps
 	}
 	return recipeItem
@@ -42,7 +42,12 @@ return:
 function ingredient_parser(ingredients, amounts) {
 	var ingredientNames = ingredients.split(',');
 	var ingredientAmounts = amounts.split(',');
-	return [ingredientNames, ingredientAmounts];
+	var ingredients = {}; 
+	for(var index = 0; index < ingredientNames.length; index++)
+		ingredients[ingredientNames[index]] = ingredientAmounts[index];
+
+	//return [ingredientNames, ingredientAmounts];
+	return [ingredientNames, ingredients]
 };
 
 /*
