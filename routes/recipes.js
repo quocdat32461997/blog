@@ -7,9 +7,6 @@ var recipesController = require('../controllers/recipesControllers/recipesContro
 /* GET writerecipes */
 router.get('/', recipesController.renderRecipeForm);
 
-/* POST findrecipesbyname */
-router.post('/findrecipesbyname', recipesController.findrecipesbyname);
-
 /* POST savenewrecipes */
 router.post('/savenewrecipes', recipesController.writerecipes);
 

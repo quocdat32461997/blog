@@ -20,7 +20,8 @@ exports.recipe_generator = function(recipeInput) {
 	//parse recipe-info into recipeItem
 	var recipeItem = {
 	 	'recipeID': id,
-		'recipeName': recipeInput.recipeName,
+		'title': recipeInput.recipeName,
+		'recipeName': recipeInput.recipeName.toLowerCase(),
 		'ingredients': {
 			'ingredientNames': ingredients[0],
 			'ingredients':ingredients[1]

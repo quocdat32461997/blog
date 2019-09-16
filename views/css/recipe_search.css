@@ -1,0 +1,64 @@
+.blogBox .item {
+	background: #d8d8d8;
+	-webkit-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+	max-height: 425px;
+	min-height: 425px;
+}
+
+.blogBox .item:hover {
+	background: #e8e8e8;
+	cursor: pointer;
+}
+
+.blogBox .item img {
+	width: 100%;
+}
+
+.blogBox .item p {
+	padding-bottom: 40px;
+	color: black;
+	text-decoration: none;
+}
+
+.blogBox .item .blogTxt {
+	padding: 25px;
+	font: color;
+	text-decoration: none;
+}
+
+.blogBox .item h2 {
+	margin: 15px 0;
+	font-family: 'Roboto', sans-serif;
+	color: black;
+	text-decoration: none;
+}
+
+.blogBox .item .blogCategory a {
+	padding; 5px 10px 2px;
+	border: 1px solid #616161;
+	color: #616161l
+	text-transform: uppercase;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	-webkit-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+}
+
+.blogBox .item .blogCategory a:hover {
+	background: #616161l;
+	color: #fff;
+	text-decoration: none;
+}
+
+a: hover {
+	text-decoration: none;
+}
+
+#name {
+	text-decoration: none;
+}
+
+#ingredients #steps  {
+	text-decoration: none;
+}

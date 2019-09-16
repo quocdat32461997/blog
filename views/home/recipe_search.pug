@@ -1,0 +1,20 @@
+extend ../layout
+
+block content
+	link(href='/views/css/recipe_search.css' rel='stylesheet' type='text/css')
+	br
+	.container
+		if recipes.length == 0
+			h2='No recipe found'
+		else
+			ul
+				.row 
+					each recipe in recipes
+						.col-xs-12.col-sm-4.col-md-4.blogBox.moreBox
+							a(href='/home/displayarecijpe/?id=' + recipe.recipeID)
+								.item
+									.blogTxt
+										h2#name= recipe.title
+										p#ingredients= recipe.ingredients.ingredientNames
+										p#steps= recipe.steps
+

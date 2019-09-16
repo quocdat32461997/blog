@@ -16,6 +16,7 @@ exports.renderRecipeForm = function(req, res) {
 };
 
 exports.findrecipesbyname = async function(req, res) {
+
 };
 
 exports.writerecipes = function(req, res) {
@@ -28,6 +29,7 @@ exports.writerecipes = function(req, res) {
 		TableName: 'Recipes',
 		Item: {
 			'recipeID': recipe.recipeID,
+			'title':recipe.title,
 			'recipeName': recipe.recipeName,
 			'ingredients':recipe.ingredients,
 			'steps': recipe.steps

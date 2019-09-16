@@ -11,6 +11,9 @@ router.get('/morerecipes', homeController.displayMoreRecipes);
 /* GET display about page */
 router.get('/about', homeController.displayAboutPage);
 
+/* GET find recipes */
+router.get('/findrecipesbyname', homeController.findrecipesbyname);
+
 /* GET display a recipe */
 router.get('/displayarecipe', homeController.displayarecipe);
 
